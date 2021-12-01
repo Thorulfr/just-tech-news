@@ -53,8 +53,9 @@ router.post('/', (req, res) => {
 // Update a user
 router.put('/:id', (req, res) => {
     // Expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
-    // If req.body has exact key/value pairs to match the model, you can just use `req.body` instead
+    // pass in req.body instead to only update what's passed through
     User.update(req.body, {
+        individualHooks: true,
         where: {
             id: req.params.id,
         },
